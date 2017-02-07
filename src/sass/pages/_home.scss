@@ -1,0 +1,48 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the home page.
+// -----------------------------------------------------------------------------
+.homepage {
+    p {
+        font-family: $font-family-base;
+    }
+    .alert {
+        &.alert-success,
+        &.alert-info,
+        &.alert-danger {
+            display: none;
+        }
+        &.alert-warning {
+            display: block;
+        }
+        @media (min-width: $screen-sm-min) {
+            &.alert-success,
+            &.alert-warning,
+            &.alert-danger {
+                display: none;
+            }
+            &.alert-info {
+                display: block;
+            }
+        }
+        @media (min-width: $screen-md-min) {
+            &.alert-info,
+            &.alert-warning,
+            &.alert-danger {
+                display: none;
+            }
+            &.alert-success {
+                display: block;
+            }
+        }
+        @media (min-width: $screen-lg-min) {
+            &.alert-info,
+            &.alert-warning,
+            &.alert-success {
+                display: none;
+            }
+            &.alert-danger {
+                display: block;
+            }
+        }		
+    }
+}

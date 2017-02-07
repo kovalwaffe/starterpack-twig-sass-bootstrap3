@@ -1,0 +1,10 @@
+{
+  "name": "starterpack-twig-sass-bootstrap3",
+  "private": true,
+  "main": "gulpfile.js",
+  "license": "MIT",
+  "devDependencies": {
+    "jQuery": "~1.12.0",
+    "bootstrap-sass": "^3.3.7"
+  }
+}
