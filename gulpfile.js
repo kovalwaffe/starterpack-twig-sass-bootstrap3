@@ -17,12 +17,13 @@ var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     rimraf = require('rimraf'),
     htmlbeautify = require('gulp-html-beautify'),
+    cache = require('gulp-cache'),
     util = require('gulp-util');
 
 var config = {
     js: [
-        'bower_components/jquery/dist/jquery.min.js',
-        'bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js',
+        'node_modules/jquery/dist/jquery.min.js',
+        'node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js',
         'src/js/scripts.js'
     ],
     prod: !!util.env.prod
@@ -43,9 +44,9 @@ gulp.task('clean', function () {
 require('events').EventEmitter.defaultMaxListeners = 0;
 
 gulp.task('images', function () {
-    gulp.src('src/img/**/*.{jpg,png,gif}')
-        .pipe(imagemin())
-        .pipe(gulp.dest('dist/img'));
+    gulp.src('src/images/**/*.{jpg,png,gif}')
+        .pipe(cache(imagemin({ optimizationLevel: 5, progressive: true, interlaced: true })))
+        .pipe(gulp.dest('dist/images'));
 });
 //optimization 'tinypng'
 /*
@@ -112,6 +113,6 @@ gulp.task('build', ['clean', 'sass', 'fonts', 'scripts', 'images', 'views']);
 gulp.task('default', ['build', 'browserSync'], function () {
     gulp.watch('src/sass/**/*.scss', ['sass']);
     gulp.watch('src/js/**/*.js', ['scripts']);
-    gulp.watch('src/img/**/*.{jpg,png,gif}', ['images']);
+    gulp.watch('src/images/**/*.{jpg,png,gif}', ['images']);
     gulp.watch('src/views/**/*.twig', ['views']);
 });
