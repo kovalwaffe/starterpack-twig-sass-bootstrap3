@@ -1,3 +1,6 @@
 {
-    "extends": "airbnb-base"
+    "extends": "airbnb-base",
+    "rules": {
+        "linebreak-style": ["error", process.env.NODE_ENV === 'prod' ? "unix" : "windows"]
+    }
 }
